@@ -1,0 +1,6 @@
+{
+  "name": "Video Text Extractor",
+  "description": "Python FastAPI application for YouTube OCR extraction (Export Required)",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

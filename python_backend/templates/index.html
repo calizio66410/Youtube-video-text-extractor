@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Text Extractor</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Video Text Extractor</h1>
+            <p>Intelligence Optique Temps Réel</p>
+        </header>
+        <main>
+            <div class="glass-panel">
+                <form id="extract-form">
+                    <div class="input-group">
+                        <input type="url" id="yt-url" placeholder="URL de la vidéo YouTube..." required>
+                        <button type="submit" class="primary" id="btn-submit">Analyser</button>
+                    </div>
+                    <div class="options-grid">
+                        <div class="form-control">
+                            <label>Langue (OCR)</label>
+                            <select id="lang">
+                                <option value="fra+eng">Français + Anglais</option>
+                                <option value="eng">Anglais uniquement</option>
+                            </select>
+                        </div>
+                        <div class="form-control">
+                            <label>Intervalle d'extraction: <span id="interval-val">2.0</span>s</label>
+                            <input type="range" id="interval" min="0.5" max="10" step="0.5" value="2.0">
+                        </div>
+                        <div class="form-control">
+                            <label>Mode</label>
+                            <label style="display:flex; align-items:center; gap:0.5rem; color:white; cursor:pointer;">
+                                <input type="checkbox" id="fast-mode"> Mode Rapide
+                            </label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="glass-panel progress-area" id="progress-area">
+                <div style="display:flex; justify-content:space-between;">
+                    <h3 id="status-text">Initialisation...</h3>
+                </div>
+                <div class="progress-bar-bg">
+                    <div class="progress-bar-fill"></div>
+                </div>
+                <div class="terminal-log" id="terminal-log"></div>
+            </div>
+            <div class="results-area" id="results-area">
+                <div class="glass-panel">
+                    <div class="tabs">
+                        <div class="tab active" data-target="tab-text">Texte Formaté</div>
+                        <div class="tab" data-target="tab-stats">Statistiques</div>
+                    </div>
+                    <div class="tab-content active" id="tab-text">
+                        <textarea id="result-textarea" class="result-text" readonly></textarea>
+                        <div class="actions">
+                            <button class="secondary" id="btn-copy">Copier</button>
+                            <button class="secondary" id="btn-dl-txt">Format .TXT</button>
+                            <button class="secondary" id="btn-dl-srt">Format .SRT</button>
+                        </div>
+                    </div>
+                    <div class="tab-content" id="tab-stats">
+                        <div class="stats-grid">
+                            <div class="stat-card">
+                                <div>Mots Extraits</div><div class="stat-value" id="stat-words">0</div>
+                            </div>
+                            <div class="stat-card">
+                                <div>Blocs de Texte</div><div class="stat-value" id="stat-blocks">0</div>
+                            </div>
+                            <div class="stat-card">
+                                <div>Durée Couverte</div><div class="stat-value" id="stat-duration">0 s</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="/static/js/app.js"></script>
+</body>
+</html>
